@@ -1,18 +1,24 @@
 {
-  "name": "starter-2",
+  "name": "node-api-service-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal template to create an HTTP service using Typescript and Express.js.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlym/node-api-service-starter.git"
+  },
   "main": "server.ts",
   "scripts": {
-    "start": "npm run build && npm run serve",
     "build": "npm run build-ts && npm run tslint",
     "build-ts": "tsc",
     "serve": "nodemon dist/server.js",
+    "start": "npm run build && npm run watch",
     "test": "jest --forceExit",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "watch-ts": "tsc -w"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jeffrey Lym",
+  "license": "MIT",
   "dependencies": {
     "async": "^2.1.2",
     "body-parser": "^1.15.2",
