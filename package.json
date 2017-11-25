@@ -9,9 +9,11 @@
   "main": "server.ts",
   "scripts": {
     "build": "npm run build-ts && npm run tslint",
+    "build-docker": "docker build -t jlym/node-api-service-starter .",
     "build-ts": "tsc",
     "serve": "nodemon dist/server.js",
     "start": "npm run build && npm run watch",
+    "start-docker": "docker run -p 3000:3000 jlym/node-api-service-starter",
     "test": "jest --forceExit",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
